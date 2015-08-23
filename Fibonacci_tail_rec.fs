@@ -5,6 +5,10 @@ let rec fib_tail_rec x y n =
 
 let fib = fib_tail_rec 0 1 // currying
 
-fib 9 |> printfn "fib(9)=%d"
-fib 10 |> printfn "fib(10)=%d"
-fib 11 |> printfn "fib(11)=%d"
+let print tuple1 =
+   match tuple1 with
+    | (a, b) -> printfn "fib(%A)=%A" a b
+
+[|9; 10; 11|]
+  |> Array.map (fun x -> (x, fib x))
+  |> Array.iter print

@@ -4,6 +4,10 @@ let rec fib x =
     | x when x < 2 -> x
     | x -> fib (x - 1) + fib (x - 2)
 
-fib 9 |> printfn "fib(9)=%d"
-fib 10 |> printfn "fib(10)=%d"
-fib 11 |> printfn "fib(11)=%d"
+let print tuple1 =
+   match tuple1 with
+    | (a, b) -> printfn "fib(%A)=%A" a b
+
+[9; 10; 11]
+  |> List.map (fun x -> (x, fib x))
+  |> List.iter print
